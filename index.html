@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypehaus Social</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucidity font (display / title) -->
+  <style>@font-face{font-family:'Lucidity';src:local('Lucidity'), local('Lucidity Condensed');font-weight:700;font-style:normal;}</style>
+  <style>
+    :root {
+      /* Core Palette */
+      --bg-dark: #070712;
+      --bg-deep: #0e0b1f;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.14);
+
+      /* Brand Gradient */
+      --purple: #8b5cf6;
+      --violet: #7c3aed;
+      --pink: #d946ef;
+      --indigo: #6366f1;
+
+      /* Text */
+      --text-main: #f1f1f7;
+      --text-muted: #b9bbd3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(139,92,246,0.25), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(217,70,239,0.25), transparent 40%),
+        linear-gradient(180deg, var(--bg-deep), var(--bg-dark));
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Floating Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.55;
+      animation: float 14s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    .orb.one {
+      width: 420px;
+      height: 420px;
+      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      top: 5%;
+      left: -5%;
+    }
+
+    .orb.two {
+      width: 360px;
+      height: 360px;
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      bottom: 10%;
+      right: -5%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-50px); }
+    }
+
+    header {
+      padding: 120px 20px 80px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      font-family: 'Lucidity', 'Inter', sans-serif;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(241,241,247,0.75);
+    }
+
+    header p {
+      max-width: 820px;
+      margin: 26px auto 48px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    .cta-btn {
+      padding: 16px 34px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      box-shadow: 0 12px 40px rgba(139, 92, 246, 0.45);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 25px 70px rgba(217, 70, 239, 0.55);
+    }
+
+    section {
+      padding: 90px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .feature-card:hover::after { opacity: 1; }
+
+    .feature-card:hover {
+      transform: translateY(-10px) scale(1.015);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55);
+    }
+
+    .icon {
+      font-size: 36px;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 130px 20px;
+    }
+
+    .cta-section h2 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      background: linear-gradient(90deg, var(--indigo), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cta-section p {
+      max-width: 680px;
+      margin: 0 auto 40px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #8f90b3;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.4rem; }
+      .cta-section h2 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Orbs -->
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+
+  <!-- Hero -->
+  <header>
+    <h1>Hypehaus Social</h1>
+    <div class="tagline">Your access expands when you show up</div>
+    <p>
+      Hypehaus Social is not another social media app — it’s a <strong>premium social layer</strong>
+      fused directly into real-world experiences. Every connection is powered by
+      events you attend, tickets you own, and moments you actually lived.
+      <br /><br />
+      No bots. No random DMs. No fake clout.
+      Just real people, real energy, and real presence — unlocked through culture.
+    </p>
+    <button class="cta-btn">Request Early Access</button>
+  </header>
+
+  <!-- Features -->
+  <section>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🎟️</div>
+        <h3>Ticket-Gated Identity</h3>
+        <p>
+          Your social profile evolves with the events you attend. Access is unlocked
+          only through valid tickets, ensuring every profile represents a real human
+          who showed up — not just signed up.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💬</div>
+        <h3>Permanent Mutual Chat</h3>
+        <p>
+          Conversations unlock permanently when both users interact or connect at
+          the same event. No spam requests — only intentional, mutual energy.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🪩</div>
+        <h3>Event-Based Discovery</h3>
+        <p>
+          Discover people based on shared experiences — concerts, house parties,
+          festivals, meetups, or private drops. The algorithm follows culture,
+          not vanity metrics.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>Premium Social Access</h3>
+        <p>
+          Social features live behind tickets or a dedicated subscription, keeping
+          the ecosystem exclusive, intentional, and high-signal by design.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">✨</div>
+        <h3>Luxury Glass Interface</h3>
+        <p>
+          A dark, glassmorphic UI with motion, blur, and gradients — designed to feel
+          expensive, immersive, and built for night culture.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🌍</div>
+        <h3>Built for Global Culture</h3>
+        <p>
+          From local scenes to global nightlife ecosystems, Hypehaus Social scales
+          with cities, creators, and communities — without losing authenticity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Social Media, Rebuilt Around Real Life</h2>
+    <p>
+      Hypehaus Social turns events into living social universes.
+      Your presence becomes your profile. Your ticket becomes your access.
+    </p>
+    <button class="cta-btn">Join the Waitlist</button>
+  </section>
+
+  <footer>
+    © 2026 Hypehaus Entertainment Pvt Ltd. Crafted for culture.
+  </footer>
+
+</body>
+</html>
